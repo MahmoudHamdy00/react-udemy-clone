@@ -1,3 +1,7 @@
+.root {
+  height: 100%;
+}
+
 .language-selector-container {
 
   background-color: transparent;

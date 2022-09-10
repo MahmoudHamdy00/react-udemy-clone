@@ -20,6 +20,14 @@ const Accordion = ({
           data-bs-target={`#collapse${index}`}
           aria-expanded="false"
           aria-controls={`collapse${index}`}
+          onClick={() => {
+            document
+              .getElementById(`heading${index}`)
+              .classList.toggle("collapsed");
+            document
+              .getElementById(`collapse${index}`)
+              .classList.toggle("collapse");
+          }}
         >
           <div className="accordion-button-title"> {title} </div>
           <div className="accordion-button-details">
@@ -41,14 +49,15 @@ const Accordion = ({
                 // className="udi udi-play-circle"
               >
                 <div>
-                  {item.icon_class === "udi udi-play-circle" ? (
+                  {item.icon_class !== "udi udi-play-circle" ? (
                     <Icon.PlayCircleFill />
                   ) : (
                     <Icon.FileEarmark />
                   )}{" "}
-                  {item.title}
+                  {item}
                 </div>
-                <div> {item.content_summary}</div>
+                <div> 15:28</div>
+                {/* <div> {item.content_summary}</div> */}
               </li>
             ))}
           </ul>

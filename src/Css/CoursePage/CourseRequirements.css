@@ -1,19 +1,19 @@
-.CourseRequirements>h2{
-  margin:0 0rem;
+.CourseRequirements>h2 {
+  margin: 0 0rem;
   font-weight: bold;
 }
-.CourseRequirements{
+
+.CourseRequirements {
   text-align: start;
-  width: 700px; 
-      max-width: 100%;
+  width: 700px;
+  max-width: 100%;
 
   margin: 20px auto;
 }
-.CourseRequirements-ul{
 
-}
+.CourseRequirements-ul {}
 
-.CourseRequirements-ul > li{
+.CourseRequirements-ul>li {
   margin: 0px 15px;
 }
 

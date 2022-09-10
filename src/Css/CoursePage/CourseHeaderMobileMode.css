@@ -38,7 +38,7 @@
     max-width: 100%;
     margin-bottom: 30px;
     transition: 0.3s;
-    background-image: url(https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg);
+    /* background-image: url(https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
     height: 350px;
@@ -73,7 +73,7 @@
 .info-mb{
     max-width: 100%;
 }
-@media all and (min-width: 1200px) {
+@media all and (min-width: 992px) {
     .hd-mobile-mode {
         display: none;
     }
