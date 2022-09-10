@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { DataContext } from "../../App";
 import "../../Css/NavBar/NavBar.css";
 
-function NavBar(props) {
-  const [searchQuery, setSearchQuery] = useState("");
+function NavBar({ searchItems }) {
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("query") ?? ""
+  );
+  const navigator = useNavigate();
   return (
     <Navbar bg="light" expand="lg" className="nav-custom">
       <Container fluid>
@@ -31,20 +37,23 @@ function NavBar(props) {
                 variant="outline-succes"
                 className="searchBtn"
                 onClick={(e) => {
-                  console.log("object :>> ", searchQuery);
                   e.preventDefault();
-                  props.searchFunction(searchQuery);
+                  searchItems(searchQuery);
+                  navigator({
+                    pathname: "/react-udemy-clone/",
+                    search: `?query=${searchQuery}`,
+                  });
                 }}
               >
                 <i className="fa-solid fa-magnifying-glass"></i>
               </Button>
               <input
-                ref={props.inputEl}
-                value={props.term}
+                value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 type="search"
                 placeholder="Search"
                 className="me-2"
+                id="searchInput"
                 aria-label="Search"
               />
             </Form>
@@ -69,4 +78,4 @@ function NavBar(props) {
   );
 }
 
-export default NavBar
+export default NavBar;

@@ -1,31 +1,48 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { DataContext } from "../../App";
 import "../../Css//HomePage/FieldContainer.css";
+import LoadingSpinner from "../LoadingSpinner";
 import Card from "./Card";
 import HeaderField from "./HeaderField";
-function FieldContainer(props) {
-  const {  isLoading, hasError } = props;
+import * as Icon from "react-bootstrap-icons";
+
+function FieldContainer() {
   const [CoursesBody, setCoursesBody] = useState("");
-  const data= useContext(DataContext);
-  useEffect(() => {
-    if (!isLoading) {
-      let res = genrateCoursesCard();
-      setCoursesBody(res);
-    }
-  }, [data]);
-  const genrateCoursesCard = () => {
+  const { data, isLoading, hasError } = useContext(DataContext);
+  const generateCoursesCard = useCallback(() => {
     let view = data?.map((course) => {
       return <Card data={course} key={course.id}></Card>;
     });
     return view;
-  };
-  // assign header data to FieldContainer then call genrateCoursesCard
+  }, [data]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      let res = generateCoursesCard();
+      setCoursesBody(res);
+    }
+  }, [data, generateCoursesCard, isLoading]);
+  if (hasError) {
+    return (
+      <div className="filed-box">
+        <HeaderField />
+
+        <div className="cards-parent">
+          <Icon.Eraser />
+          Something went wrong.
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="filed-box">
       <HeaderField />
-      {hasError && <p>Something went wrong.</p>}
       {isLoading ? (
-        <div> isLoading Courses........</div>
+        <LoadingSpinner />
+      ) : CoursesBody.length === 0 ? (
+        <div className="cards-parent">
+          NO available courses with this criteria{" "}
+        </div>
       ) : (
         <div className="cards-parent">{CoursesBody}</div>
       )}

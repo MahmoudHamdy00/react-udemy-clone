@@ -2,54 +2,59 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import NavBar from "./components/NavBar/NavBar.js";
-import { useState} from "react";
 import HomePage from "./pages/HomePage";
 import useFetch from "./Hooks/useFetch";
 import CoursePage from "./pages/CoursePage";
-import {Courses} from "./db.js";
-import { useRoutes } from "react-router-dom";
+import { Courses } from "./db.js";
+import { useNavigate, useRoutes, useSearchParams } from "react-router-dom";
 import Footer from "./components/Footer";
-import { createContext } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 const CourseData = "http://localhost:3005/courses";
 export const DataContext = createContext();
 function App() {
-  const [searchInput, setSearchInput] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
-  const { data, isLoading, hasError } = useFetch(CourseData);
-
+  const Data = useFetch(CourseData);
   // const data=Courses;
   // const isLoading =false
   // const hasError =false;
 
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    if (searchValue !== "") {
-      const filteredData = data.filter((item) => {
-        return Object.values(item.title)
-          .join("")
-          .toLowerCase()
-          .includes(searchValue.toLowerCase());
-      });
-      setFilteredResults(filteredData);
-    } else {
-      setFilteredResults(data);
-    }
-  };
-
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("query") ?? ""
+  );
+  const navigator = useNavigate();
+  const searchItems = useCallback(
+    (searchValue) => {
+      if (searchValue !== "") {
+        const filteredData = Data?.data?.filter((item) => {
+          return Object.values(item.title)
+            .join("")
+            .toLowerCase()
+            .includes(searchValue.toLowerCase());
+        });
+        Data.data = filteredData;
+              //left commented to get review for this way
+        // if (window.location.pathname !== "/react-udemy-clone/") {
+        //   window.location.pathname = "/react-udemy-clone/";
+        //   console.log("object :>> ");
+        // }
+        //  if()
+        // navigator({
+        //   pathname: "/react-udemy-clone/",
+        //   search: `?query=${searchQuery}`,
+        // });
+      }
+    },
+    [searchQuery, Data]
+  );
+  // console.log("searchQuery :>> ", searchQuery);
+  useEffect(() => searchItems(searchQuery), [searchQuery, searchItems]);
   let element = useRoutes([
     {
       path: "/react-udemy-clone/",
       element: (
         <>
-          <DataContext.Provider
-            value={searchInput.length !== 0 ? filteredResults : data}
-          >
-            <NavBar searchFunction={searchItems} />
-            <HomePage
-              isLoading={isLoading}
-              hasError={hasError}
-            />
-            <Footer />
+          <DataContext.Provider value={Data}>
+            <HomePage searchItems={setSearchQuery} />
           </DataContext.Provider>
         </>
       ),
@@ -58,16 +63,15 @@ function App() {
       path: `/react-udemy-clone/course/:id`,
       element: (
         <>
-          <DataContext.Provider value={data}>
-            <NavBar searchFunction={searchItems} />
-
+          <DataContext.Provider value={Data}>
+            <NavBar searchItems={setSearchQuery} />
             <CoursePage />
             <Footer />
           </DataContext.Provider>
         </>
       ),
     },
-    { path: "*", element: <div>lol</div> },
+    { path: "*", element: <div>page not found</div> },
   ]);
   return element;
 }

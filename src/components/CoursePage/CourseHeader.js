@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../../Css//CoursePage/CourseHeader.css'
+import LoadingSpinner from '../LoadingSpinner'
 import CourseHeaderMobileMode from './CourseHeaderMobileMode'
 import SideCard from './SideCard'
 const StarRating = () => {
@@ -15,15 +16,15 @@ const StarRating = () => {
 }
 function CourseHeader(props) {
     const [course, setCourse] = useState([])
-    const [isLoading, setisLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         if (props.data != null) {
-            setisLoading(false)
+            setIsLoading(false)
             setCourse(props.data)
         }
     }, [props.data])
     return isLoading ? (
-      <div>looodaing----</div>
+      <LoadingSpinner/>
     ) : (
       <div className="Header">
         <div className="header-content">

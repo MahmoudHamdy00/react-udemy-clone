@@ -11,7 +11,12 @@
   margin: 20px auto;
 }
 
-.CourseDescription-ul {}
+.seeMoreBtn{
+  margin: 10px 0px;
+  border: none;
+  background-color: transparent;
+  color: blue;
+}
 
 .CourseDescription-ul>li {
   margin: 0px 15px;

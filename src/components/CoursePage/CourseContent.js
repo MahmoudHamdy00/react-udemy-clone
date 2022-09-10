@@ -47,6 +47,7 @@ function CourseContent({ course }) {
       <div className="accordion" id="courseContentAccordion">
         {course?.content?.map((item, index) => (
           <Accordion
+            key={index}
             title={item[0]}
             items={item[1]}
             index={index}

@@ -1,21 +1,20 @@
-import React, { useContext } from 'react'
-import { DataContext } from '../App'
-import Banner from '../components/homePage/Banner'
-import FieldContainer from '../components/homePage/FieldContainer'
-import '../Css/HomePage/HomePage.css'
-function HomePage(props) {
-    const {  isLoading, hasError } = props
-    return (
-        <>
-            <div className="home-body">
-                <Banner />
-                <FieldContainer
-                    isLoading={isLoading}
-                    hasError={hasError}
-                ></FieldContainer>
-            </div>
-        </>
-    )
+import React from "react";
+import Footer from "../components/Footer";
+import Banner from "../components/homePage/Banner";
+import FieldContainer from "../components/homePage/FieldContainer";
+import NavBar from "../components/NavBar/NavBar";
+import "../Css/HomePage/HomePage.css";
+function HomePage({ searchItems }) {
+  return (
+    <>
+      <NavBar searchItems={searchItems} />
+      <div className="home-body">
+        <Banner />
+        <FieldContainer></FieldContainer>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
-export default HomePage
+export default HomePage;

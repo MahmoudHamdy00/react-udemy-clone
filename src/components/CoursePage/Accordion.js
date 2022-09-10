@@ -43,9 +43,9 @@ const Accordion = ({
       >
         <div className="accordion-body">
           <ul>
-            {items.map((item) => (
+            {items.map((item,id) => (
               <li
-                key={item.id}
+                key={id}
                 // className="udi udi-play-circle"
               >
                 <div>

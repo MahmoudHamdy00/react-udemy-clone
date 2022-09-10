@@ -5,8 +5,8 @@ function InstructorList({ instructors }) {
   return (
     <div className="instractors-container">
       <h1>Instructors</h1>
-      {instructors?.map((instructor) => (
-        <Instructor instructor ={instructor}/>
+      {instructors?.map((instructor, index) => (
+        <Instructor instructor={instructor} key={index} />
       ))}
     </div>
   );

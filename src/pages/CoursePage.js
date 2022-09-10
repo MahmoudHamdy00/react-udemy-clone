@@ -24,7 +24,7 @@ let courseObject;
 //   });
 function CoursePage() {
   const { id } = useParams();
-  const data=useContext(DataContext)
+  const { data, isLoading, hasError } = useContext(DataContext);
   if(id>data.length){
     return <h1 style={{display:'flex',justifyContent:'center',height:'200px'}}>Course not found</h1>
   }

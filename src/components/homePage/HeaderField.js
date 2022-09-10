@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { HomeHeader } from "../../db";
 import useFetch from "../../Hooks/useFetch";
+import LoadingSpinner from "../LoadingSpinner";
 
 function HeaderField() {
   const CourseHeader =
     "https://my-json-server.typicode.com/M7mmed-Sayed/myjsondata/python-header";
-  //   const { data, isLoading, hasError } = useFetch(CourseHeader);
   //   const { data, isLoading, hasError } = useFetch(CourseHeader);
   const data = HomeHeader;
   const isLoading = false;
@@ -14,7 +14,7 @@ function HeaderField() {
     <div className="course-header">
       {hasError && <p>Something went wrong.</p>}
       {isLoading ? (
-        <div> isLoading HeaderField........</div>
+        <LoadingSpinner/>
       ) : (
         <>
           <div className="course-header">

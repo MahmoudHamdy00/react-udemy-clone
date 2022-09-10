@@ -6,7 +6,7 @@ function ReviewList({ reviews }) {
     <div className="student-container-review">
       <h1>Review</h1>
       {reviews?.map((review) => (
-        <ReviewContainer review ={review}/>
+        <ReviewContainer review ={review} key={review.id}/>
       ))}
     </div>
   );
