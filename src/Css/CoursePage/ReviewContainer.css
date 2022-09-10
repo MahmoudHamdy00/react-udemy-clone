@@ -1,10 +1,7 @@
 .student-review{
-    flex-direction: row;
     display: flex;
     margin: 30px 0px 10px 10px;
-    float: left;
-    width: 600px;
-    max-width: 80%;
+    width: 700px;
 }
 
 .rev-custom-name{
@@ -32,7 +29,5 @@ margin-bottom: 5px;
 max-width: 80%;
 }
 .ev-desc-comment{
-    width: 400px;
-    max-width: 80%;
-
+    width: 640px;
 }

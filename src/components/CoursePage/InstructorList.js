@@ -1,15 +1,15 @@
-import React from 'react'
-import Instructor from './Instructor'
+import React from "react";
+import Instructor from "./Instructor";
 
-function InstructorList() {
-    return (
-        <div className="instractors-container">
-            <h1>Instructors</h1>
-            <Instructor />
-            <Instructor />
-            <Instructor />
-        </div>
-    )
+function InstructorList({ instructors }) {
+  return (
+    <div className="instractors-container">
+      <h1>Instructors</h1>
+      {instructors?.map((instructor) => (
+        <Instructor instructor ={instructor}/>
+      ))}
+    </div>
+  );
 }
 
-export default InstructorList
+export default InstructorList;

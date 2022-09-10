@@ -1,19 +1,15 @@
-import React from 'react'
-import ReviewContainer from './ReviewContainer'
-
-function ReviewList() {
+import React from "react";
+import ReviewContainer from "./ReviewContainer";
+import "../../Css/CoursePage/StudentReview.css";
+function ReviewList({ reviews }) {
   return (
-      <div className="w-100">
-          <h1>Review</h1>
-          <ReviewContainer />
-          <hr />
-          <ReviewContainer />
-          <hr />
-          <ReviewContainer />
-          <hr />
-          <ReviewContainer />
-      </div>
-  )
+    <div className="student-container-review">
+      <h1>Review</h1>
+      {reviews?.map((review) => (
+        <ReviewContainer review ={review}/>
+      ))}
+    </div>
+  );
 }
 
-export default ReviewList
+export default ReviewList;

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import CourseContentData from "../../Data/CourseContentData";
 import "../../Css/CoursePage/CourseContent.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Accordion from "./Accordion";
 
-function CourseContent() {
-  const { data } = CourseContentData;
+function CourseContent({ course }) {
   const [expandBtnValue, setExpandBtnValue] = useState("Expand");
   const lecturesDuration = (content_length) => {
     let hmsFormat = content_length.split(":");
@@ -33,8 +31,8 @@ function CourseContent() {
       <h2>Course content</h2>
       <div className="courseContentHeader">
         <div>
-          {data.sections.length} sections • {data.num_of_published_lectures}
-          lectures • {lecturesDuration(data.estimated_content_length_text)} total length
+          {course?.sectionsCount} sections •{course?.lecturesCount}
+          lectures • {course?.lecturesCount} total length
         </div>
         <button
           type="button"
@@ -47,18 +45,16 @@ function CourseContent() {
         </button>
       </div>
       <div className="accordion" id="courseContentAccordion">
-        {data.sections.map(
-          ({ title, items, index, lecture_count, content_length_text }) => (
-            <Accordion
-              title={title}
-              items={items}
-              index={index}
-              lecture_count={lecture_count}
-              content_length_text={content_length_text}
-              lecturesDuration={lecturesDuration}
-            />
-          )
-        )}
+        {course?.content?.map((item, index) => (
+          <Accordion
+            title={item[0]}
+            items={item[1]}
+            index={index}
+            lecture_count={10}
+            content_length_text={"60min"}
+            lecturesDuration={lecturesDuration}
+          />
+        ))}
       </div>
     </div>
   );

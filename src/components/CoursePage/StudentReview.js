@@ -3,13 +3,15 @@ import "../../Css/CoursePage/StudentReview.css";
 import reviewContext from "../../Data/reviewContext";
 import * as Icon from "react-bootstrap-icons";
 
-function StudentReview() {
+function StudentReview({ studentFeedback }) {
   let total = 0;
-  reviewContext.ratingDistribution.map((x) => (total += x.count));
-  let ratingCount = {};
-  reviewContext.ratingDistribution.map(
-    (x) => (ratingCount[x.rating] = Math.round((x.count / total) * 100))
-  );
+  // reviewContext.ratingDistribution.map((x) => (total += x.count));
+  let ratingCount =[];
+  if(studentFeedback)ratingCount= [0, ...studentFeedback];
+  // reviewContext.ratingDistribution.map(
+  //   (x) => (ratingCount[x.rating] = Math.round((x.count / total) * 100))
+  // );
+
   return (
     <div className="student-container-review">
       <h2 className="ratingHeading">Student feedback</h2>
@@ -34,57 +36,19 @@ function StudentReview() {
               <div
                 className="ratingLineFill"
                 style={{
-                  width: `${ratingCount[5]}%`,
-                }}
-              ></div>
-              <div></div>
-            </div>
-            <div className="starLine">
-              <Icon.StarFill className="starOrange" />
-              <Icon.StarFill className="starOrange" />
-              <Icon.StarFill className="starOrange" />
-              <Icon.StarFill className="starOrange" />
-              <Icon.StarFill className="starOrange" />
-            </div>
-            <span className="ratingCount">{ratingCount[5]}%</span>
-          </div>
-          <div className="ratingLineStarContainer">
-            <div className="ratingLine">
-              <div
-                className="ratingLineFill"
-                style={{
-                  width: `${ratingCount[4]}%`,
-                }}
-              ></div>
-              <div></div>
-            </div>
-            <div className="starLine">
-              <Icon.StarFill className="starOrange" />
-              <Icon.StarFill className="starOrange " />
-              <Icon.StarFill className="starOrange " />
-              <Icon.StarFill className="starOrange " />
-              <Icon.Star className="starOrange " />
-            </div>
-            <span className="ratingCount">{ratingCount[4]}%</span>
-          </div>
-          <div className="ratingLineStarContainer">
-            <div className="ratingLine">
-              <div
-                className="ratingLineFill"
-                style={{
-                  width: `${ratingCount[3]}%`,
+                  width: `${ratingCount[1]}%`,
                 }}
               ></div>
               <div></div>
             </div>
             <div className="starLine">
               <Icon.StarFill className="starOrange " />
-              <Icon.StarFill className="starOrange " />
-              <Icon.StarFill className="starOrange " />
+              <Icon.Star className="starOrange " />
+              <Icon.Star className="starOrange " />
               <Icon.Star className="starOrange " />
               <Icon.Star className="starOrange " />
             </div>
-            <span className="ratingCount">{ratingCount[3]}%</span>
+            <span className="ratingCount">{ratingCount[1]}%</span>
           </div>
           <div className="ratingLineStarContainer">
             <div className="ratingLine">
@@ -110,19 +74,58 @@ function StudentReview() {
               <div
                 className="ratingLineFill"
                 style={{
-                  width: `${ratingCount[1]}%`,
+                  width: `${ratingCount[3]}%`,
                 }}
               ></div>
               <div></div>
             </div>
             <div className="starLine">
               <Icon.StarFill className="starOrange " />
-              <Icon.Star className="starOrange " />
-              <Icon.Star className="starOrange " />
+              <Icon.StarFill className="starOrange " />
+              <Icon.StarFill className="starOrange " />
               <Icon.Star className="starOrange " />
               <Icon.Star className="starOrange " />
             </div>
-            <span className="ratingCount">{ratingCount[1]}%</span>
+            <span className="ratingCount">{ratingCount[3]}%</span>
+          </div>
+
+          <div className="ratingLineStarContainer">
+            <div className="ratingLine">
+              <div
+                className="ratingLineFill"
+                style={{
+                  width: `${ratingCount[4]}%`,
+                }}
+              ></div>
+              <div></div>
+            </div>
+            <div className="starLine">
+              <Icon.StarFill className="starOrange" />
+              <Icon.StarFill className="starOrange " />
+              <Icon.StarFill className="starOrange " />
+              <Icon.StarFill className="starOrange " />
+              <Icon.Star className="starOrange " />
+            </div>
+            <span className="ratingCount">{ratingCount[4]}%</span>
+          </div>
+          <div className="ratingLineStarContainer">
+            <div className="ratingLine">
+              <div
+                className="ratingLineFill"
+                style={{
+                  width: `${ratingCount[5]}%`,
+                }}
+              ></div>
+              <div></div>
+            </div>
+            <div className="starLine">
+              <Icon.StarFill className="starOrange" />
+              <Icon.StarFill className="starOrange" />
+              <Icon.StarFill className="starOrange" />
+              <Icon.StarFill className="starOrange" />
+              <Icon.StarFill className="starOrange" />
+            </div>
+            <span className="ratingCount">{ratingCount[5]}%</span>
           </div>
         </div>
       </div>
