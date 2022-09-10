@@ -41,12 +41,13 @@ function App() {
       path: "/react-udemy-clone/",
       element: (
         <>
-          <DataContext.Provider value={data}>
+          <DataContext.Provider
+            value={searchInput.length !== 0 ? filteredResults : data}
+          >
             <NavBar searchFunction={searchItems} />
             <HomePage
               isLoading={isLoading}
               hasError={hasError}
-              data={searchInput.length !== 0 ? filteredResults : data}
             />
             <Footer />
           </DataContext.Provider>
@@ -60,7 +61,7 @@ function App() {
           <DataContext.Provider value={data}>
             <NavBar searchFunction={searchItems} />
 
-            <CoursePage data={data} />
+            <CoursePage />
             <Footer />
           </DataContext.Provider>
         </>

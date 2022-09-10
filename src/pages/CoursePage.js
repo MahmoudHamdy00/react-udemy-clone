@@ -12,6 +12,7 @@ import WhatYouWillLearn from "../components/CoursePage/WhatYouWillLearn";
 import "../Css/CoursePage/CoursePage.css";
 import SideCard from "../components/CoursePage/SideCard";
 import { useParams } from "react-router-dom";
+import { DataContext } from "../App";
 
 let courseObject;
 
@@ -21,8 +22,9 @@ let courseObject;
 //     console.log(data);
 //     courseObject = data[0];
 //   });
-function CoursePage({ data }) {
+function CoursePage() {
   const { id } = useParams();
+  const data=useContext(DataContext)
   if(id>data.length){
     return <h1 style={{display:'flex',justifyContent:'center',height:'200px'}}>Course not found</h1>
   }

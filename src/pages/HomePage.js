@@ -4,7 +4,7 @@ import Banner from '../components/homePage/Banner'
 import FieldContainer from '../components/homePage/FieldContainer'
 import '../Css/HomePage/HomePage.css'
 function HomePage(props) {
-    const { data, isLoading, hasError } = props
+    const {  isLoading, hasError } = props
     return (
         <>
             <div className="home-body">
