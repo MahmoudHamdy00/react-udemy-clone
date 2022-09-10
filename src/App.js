@@ -38,7 +38,7 @@ function App() {
 
   let element = useRoutes([
     {
-      path: "/udemy-clone-react/",
+      path: "/react-udemy-clone/",
       element: (
         <>
           <DataContext.Provider value={data}>
@@ -54,7 +54,7 @@ function App() {
       ),
     },
     {
-      path: `/udemy-clone-react/course/:id`,
+      path: `/react-udemy-clone/course/:id`,
       element: (
         <>
           <DataContext.Provider value={data}>

@@ -107,7 +107,7 @@ function Footer() {
       <div className="logo-and-copyright">
         <div className="logo-container" data-purpose="logo-container">
           <Link
-            to="/udemy-clone-react"
+            to="/react-udemy-clone"
             className="udlite-btn udlite-btn-large udlite-btn-link udlite-heading-md"
           >
             <img

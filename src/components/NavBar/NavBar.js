@@ -12,7 +12,7 @@ function NavBar(props) {
     <Navbar bg="light" expand="lg" className="nav-custom">
       <Container fluid>
         <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Brand href="/udemy-clone-react">
+        <Navbar.Brand href="/react-udemy-clone">
           <img
             width="80"
             height="33"
