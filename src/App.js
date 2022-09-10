@@ -1,21 +1,13 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import NavScrollExample from "./components/NavBar/NavScrollExample";
-import { useState, useRef } from "react";
-
+import NavBar from "./components/NavBar/NavBar.js";
+import { useState} from "react";
 import HomePage from "./pages/HomePage";
 import useFetch from "./Hooks/useFetch";
 import CoursePage from "./pages/CoursePage";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useRoutes,
-  BrowserRouter,
-  Navigate,
-} from "react-router-dom";
+import {Courses} from "./db.js";
+import { useRoutes } from "react-router-dom";
 import Footer from "./components/Footer";
 import { createContext } from "react";
 const CourseData = "http://localhost:3005/courses";
@@ -24,7 +16,11 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const { data, isLoading, hasError } = useFetch(CourseData);
-  const inputEl = useRef("");
+
+  // const data=Courses;
+  // const isLoading =false
+  // const hasError =false;
+
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
     if (searchValue !== "") {
@@ -46,7 +42,7 @@ function App() {
       element: (
         <>
           <DataContext.Provider value={data}>
-            <NavScrollExample searchFunction={searchItems} />
+            <NavBar searchFunction={searchItems} />
             <HomePage
               isLoading={isLoading}
               hasError={hasError}
@@ -62,7 +58,7 @@ function App() {
       element: (
         <>
           <DataContext.Provider value={data}>
-            <NavScrollExample searchFunction={searchItems} />
+            <NavBar searchFunction={searchItems} />
 
             <CoursePage data={data} />
             <Footer />

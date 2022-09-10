@@ -14,11 +14,7 @@ function FieldContainer(props) {
     }
   }, [data]);
   const genrateCoursesCard = () => {
-    /*copy the courses form props.data
-            map to courses an set id of course as key 
-            then call each item from courses to create small card
-            */
-    let view = data.map((course) => {
+    let view = data?.map((course) => {
       return <Card data={course} key={course.id}></Card>;
     });
     return view;

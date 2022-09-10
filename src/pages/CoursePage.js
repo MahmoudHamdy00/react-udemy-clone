@@ -23,7 +23,7 @@ let courseObject;
 //   });
 function CoursePage({ data }) {
   const { id } = useParams();
-  if(id>=data.length){
+  if(id>data.length){
     return <h1 style={{display:'flex',justifyContent:'center',height:'200px'}}>Course not found</h1>
   }
   const course = data[id - 1];
