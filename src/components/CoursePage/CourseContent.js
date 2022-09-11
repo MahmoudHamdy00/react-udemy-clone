@@ -17,12 +17,16 @@ function CourseContent({ course }) {
   const handleExpandCollapseButton = (e) => {
     let accordionButtons = document.getElementsByClassName("accordion-button");
     Array.from(accordionButtons).forEach((item) => {
-      item.classList.toggle("collapsed");
+      expandBtnValue === "Expand"
+        ? item.classList.remove("collapsed")
+        : item.classList.add("collapsed");
     });
 
     let accordionBodies = document.getElementsByClassName("accordion-collapse");
     Array.from(accordionBodies).forEach((item) => {
-      item.classList.toggle("collapse");
+      expandBtnValue === "Expand"
+        ? item.classList.remove("collapse")
+        : item.classList.add("collapse");
     });
     setExpandBtnValue(expandBtnValue === "Collapse" ? "Expand" : "Collapse");
   };

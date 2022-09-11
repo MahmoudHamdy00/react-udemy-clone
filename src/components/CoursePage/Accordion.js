@@ -20,9 +20,10 @@ const Accordion = ({
           data-bs-target={`#collapse${index}`}
           aria-expanded="false"
           aria-controls={`collapse${index}`}
+          id={`headingBtn${index}`}
           onClick={() => {
             document
-              .getElementById(`heading${index}`)
+              .getElementById(`headingBtn${index}`)
               .classList.toggle("collapsed");
             document
               .getElementById(`collapse${index}`)

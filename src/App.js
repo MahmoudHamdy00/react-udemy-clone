@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import useFetch from "./Hooks/useFetch";
 import CoursePage from "./pages/CoursePage";
 import { Courses } from "./db.js";
-import { useNavigate, useRoutes, useSearchParams } from "react-router-dom";
+import { useRoutes, useSearchParams } from "react-router-dom";
 import Footer from "./components/Footer";
 import { createContext, useCallback, useEffect, useState } from "react";
 const CourseData = "http://localhost:3005/courses";
@@ -21,7 +21,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState(
     searchParams.get("query") ?? ""
   );
-  const navigator = useNavigate();
   const searchItems = useCallback(
     (searchValue) => {
       if (searchValue !== "") {
@@ -32,7 +31,7 @@ function App() {
             .includes(searchValue.toLowerCase());
         });
         Data.data = filteredData;
-              //left commented to get review for this way
+        //left commented to get review for this way
         // if (window.location.pathname !== "/react-udemy-clone/") {
         //   window.location.pathname = "/react-udemy-clone/";
         //   console.log("object :>> ");
