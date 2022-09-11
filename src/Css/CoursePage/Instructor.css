@@ -23,7 +23,6 @@
 }
 .instructor > .description {
     display: flex;
-    width: 300px;
     max-width: 100%;
     flex-wrap: wrap;
     align-items: flex-start;

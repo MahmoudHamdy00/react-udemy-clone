@@ -5,12 +5,11 @@
 
 .student-container-review {
     margin: 50px 0px;
-    width: 700px;
+    width: 100%;
 }
 
 .ratingBox {
     display: flex;
-    /* grid-template-columns: 1fr 3fr; */
     justify-content: space-between;
     width: 700px;
     max-width: 100%;
@@ -44,6 +43,7 @@
 
 .ratingLineStarBox {
     width: 80%;
+        max-width: 100%;
 }
 
 .ratingLine {
@@ -60,6 +60,7 @@
 
 .ratingLineStarContainer {
     display: flex;
+        max-width: 100%;
 }
 
 @media (max-width: 600x) {
